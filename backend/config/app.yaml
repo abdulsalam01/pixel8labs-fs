@@ -1,0 +1,6 @@
+APP:
+  port: "8000"
+GITHUB:
+  base_url: "https://api.github.com"
+  client_id: "c3b50aa5cfe9485af3b7"
+  client_secret: "a51c0d0c3cdde642d5d28cb3831d1540e82653e8"

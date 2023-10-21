@@ -8,3 +8,6 @@ coverage.json
 #Hardhat files
 **/cache
 **/artifacts
+
+#Non-need files
+backend/vendor
