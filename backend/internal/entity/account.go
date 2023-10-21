@@ -8,6 +8,7 @@ type Account struct {
 	Email        string `json:"email"`
 	Bio          string `json:"bio"`
 	Follower     int64  `json:"followers"`
+	Following    int64  `json:"following"`
 	FollowersUrl string `json:"followers_url"`
 }
 

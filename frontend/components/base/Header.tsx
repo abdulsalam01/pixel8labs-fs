@@ -1,7 +1,18 @@
 // components/Header.js
+import React from 'react';
 import Link from 'next/link';
+import { login } from '@/utils/auth';
 
 const Header = () => {
+
+  async function doLogin(e: any) {
+    console.log("masuk")
+
+    const d = await login()
+    console.log(d)
+
+  }
+
   return (
     <nav className='navbar navbar-light'>
       <div className='container-fluid'>
@@ -10,11 +21,9 @@ const Header = () => {
           <span>Simple.Repo</span>
         </Link>
 
-        <form className='d-flex'>
-          <Link href={''}>
-            <button className='btn btn-primary'>Login with Github</button>
-          </Link>
-        </form>
+        <div className='d-flex'>
+            <button className='btn btn-primary' onClick={doLogin}>Login with Github</button>
+        </div>
       </div>
     </nav>
   );

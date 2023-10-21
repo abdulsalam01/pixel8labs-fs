@@ -20,7 +20,8 @@
       "@/public/*": ["public/*"],
       "@/components/*": ["components/*"],
       "@/pages/*": ["pages/*"],
-      "@/types/*": ["types/*"]
+      "@/types/*": ["types/*"],
+      "@/utils/*": ["utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
