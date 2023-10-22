@@ -13,6 +13,16 @@ https://api.postman.com/collections/1535500-00a1ba78-9f9e-49d9-8b85-5eafa79e104d
 https://www.figma.com/file/Muuu8UJcEY3Ixv8ji2sAlv/PixelLabs-8?mode=dev
 ```
 
+- Backend URL:
+```
+https://ghanicenter.com/backend-extra/api
+```
+
+- Frontend URL:
+```
+https://pixel8labs-frontend-ga50fwsbu-abdulsalam121196.vercel.app
+```
+
 ## Backend
 
 ### Technology Stack
