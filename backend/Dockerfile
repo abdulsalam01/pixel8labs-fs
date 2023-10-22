@@ -8,10 +8,10 @@ WORKDIR /app
 COPY . .
 
 # Build the Go application and place the binary in the /app directory
-RUN go build -o /app
+RUN go build -o app
 
 # Expose the port the application will run on
 EXPOSE 8000
 
 # Command to run the application
-CMD ["/app"]
+CMD ["/app/app"]
