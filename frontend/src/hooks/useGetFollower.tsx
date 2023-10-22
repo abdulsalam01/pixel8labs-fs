@@ -1,7 +1,7 @@
-import { AppContext, type AppContextType } from "@/context/AppContext";
-import { getConfig } from "@/helper/getConfig";
-import { type Follower } from "@/types";
-import { useContext, useEffect } from "react";
+import { AppContext, type AppContextType } from '@/context/AppContext';
+import { getConfig } from '@/helper/getConfig';
+import { type Follower } from '@/types';
+import { useContext, useEffect } from 'react';
 
 export const useGetFollower = () => {
   const ctx = useContext(AppContext) as AppContextType;

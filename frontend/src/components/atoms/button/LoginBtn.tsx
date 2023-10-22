@@ -1,7 +1,7 @@
-import { useLogin } from "@/hooks/login";
-import { Btn } from "./btn";
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+import { useLogin } from '@/hooks/login';
+import { Btn } from './btn';
+import { Inter } from 'next/font/google';
+const inter = Inter({ subsets: ['latin'] });
 
 export const LoginBtn = () => {
   const handleLogin = useLogin();

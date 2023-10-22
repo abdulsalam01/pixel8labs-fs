@@ -1,6 +1,6 @@
 export const getConfig = () => {
   let config: any = {};
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
 
   if (token !== null) {
     config = {

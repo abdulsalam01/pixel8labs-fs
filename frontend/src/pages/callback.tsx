@@ -1,5 +1,5 @@
-import { useGetToken } from "@/hooks";
-import { type NextPage } from "next";
+import { useGetToken } from '@/hooks';
+import { type NextPage } from 'next';
 
 const Callback: NextPage = () => {
   useGetToken();

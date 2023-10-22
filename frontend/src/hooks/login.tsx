@@ -3,15 +3,15 @@ export const useLogin = () => {
   const doLogin = async () => {
     try {
       const response = await fetch(url, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "content-type": "application/json",
+          'content-type': 'application/json',
         },
       });
       const jsonData = await response.json();
       window.location.href = jsonData.data;
     } catch (error: any) {
-      throw new Error("Login error" + error.message);
+      throw new Error('Login error' + error.message);
     }
   };
 

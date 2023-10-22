@@ -1,5 +1,5 @@
-import { type Repository, type Follower, type UserData } from "@/types";
-import React, { useState, type ReactNode } from "react";
+import { type Repository, type Follower, type UserData } from '@/types';
+import React, { useState, type ReactNode } from 'react';
 
 export const AppContext = React.createContext({});
 
