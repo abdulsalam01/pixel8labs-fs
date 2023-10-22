@@ -1,4 +1,4 @@
 [build]
   command = "go build -o app ./cmd"
   functions = "backend/"
-  publish = "frontend/build"
+  publish = "backend"
