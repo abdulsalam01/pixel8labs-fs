@@ -10,6 +10,7 @@ type Account struct {
 	Follower     int64  `json:"followers"`
 	Following    int64  `json:"following"`
 	FollowersUrl string `json:"followers_url"`
+	Visitor      uint64 `json:"total_visitor"`
 }
 
 type Email struct {

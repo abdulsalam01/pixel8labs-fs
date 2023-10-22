@@ -1,11 +1,14 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
+	"github.com/allegro/bigcache/v3"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/render"
@@ -13,6 +16,7 @@ import (
 
 	app "github.com/abdulsalam/pixel8labs/config"
 	handler "github.com/abdulsalam/pixel8labs/internal/handler/github"
+	repo "github.com/abdulsalam/pixel8labs/internal/repo/github"
 	service "github.com/abdulsalam/pixel8labs/internal/service/github"
 	usecase "github.com/abdulsalam/pixel8labs/internal/usecase/github"
 
@@ -22,6 +26,7 @@ import (
 var (
 	routes = flag.Bool("routes", false, "Generate router documentation")
 	path   = "config/"
+	ctx    = context.Background()
 )
 
 func main() {
@@ -36,13 +41,34 @@ func main() {
 	// Load oauthConfig.
 	oauthConfig := app.LoadOAuthConfig(config)
 
+	// Load inMem database.
+	bigCache, err := bigcache.New(ctx, bigcache.Config{
+		// Time after which entry can be evicted
+		LifeWindow: 10 * time.Minute, // Set per now, since no need to keep by time for a long time.
+		// Number of shards (must be a power of 2)
+		Shards: 1024,
+		// RPS * lifeWindow, used only in initial memory allocation.
+		MaxEntriesInWindow: 1000 * 10 * 60,
+		// Max entry size in bytes, used only in initial memory allocation.
+		MaxEntrySize: 500,
+		// Skip spamming prints information about additional memory allocation.
+		Verbose: false,
+	})
+	if err != nil {
+		return
+	}
+
+	// Load repo.
+	log.Println("Setup repo")
+	repository := repo.New(bigCache)
+
 	// Load services.
 	log.Println("Setup service")
 	svc := service.New(oauthConfig, config)
 
 	// Load usecase.
 	log.Println("Setup usecase")
-	uc := usecase.New(svc)
+	uc := usecase.New(svc, repository)
 
 	// Load handler.
 	log.Println("Setup handler")
@@ -62,7 +88,11 @@ func setupRoutes(
 	handler *handler.Handler,
 ) *chi.Mux {
 	// Create a new CORS middleware with default options.
-	corsMiddleware := cors.Default()
+	corsMiddleware := cors.New(cors.Options{
+		AllowedOrigins: []string{"http://localhost:3000"},
+		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowedHeaders: []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+	})
 
 	r.Use(corsMiddleware.Handler)
 	r.Use(middleware.RequestID)

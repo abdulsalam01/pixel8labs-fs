@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "colors";
+@import "header";
+
+body {
+  background-color: white;
+}
+
+@media (min-width: 768px) {
+  body {
+    background-color: $gray25;
+  }
+}

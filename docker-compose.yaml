@@ -1,0 +1,23 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ulimits:
+      nofile:
+        soft: 4096  # Set the soft limit for open files
+        hard: 8192  # Set the hard limit for open file
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "8000:8000"  # Expose the Go backend on port 8000
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"  # Expose the Next.js frontend on port 3000
+    depends_on:
+      - backend  # Ensure the backend is running before starting the frontend

@@ -17,6 +17,11 @@ type GithubResource interface {
 	GetCallback(ctx context.Context, code string) (*oauth2.Token, error)
 }
 
+type UserResource interface {
+	SetVisitorByID(ctx context.Context, id int64) (uint64, error)
+}
+
 type Usecase struct {
 	githubResource GithubResource
+	userResource   UserResource
 }

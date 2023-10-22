@@ -22,5 +22,21 @@ func (u *Usecase) GetUser(ctx context.Context, params entity.BaseRequestParams) 
 		return resp, err
 	}
 
+	// Get total visitor inMemory.
+	resp.Visitor, err = u.getUserVisitorByID(ctx, resp.ID)
+	if err != nil {
+		return resp, err
+	}
+
 	return resp, nil
+}
+
+func (u *Usecase) getUserVisitorByID(ctx context.Context, id int64) (uint64, error) {
+	var (
+		total uint64
+		err   error
+	)
+
+	total, err = u.userResource.SetVisitorByID(ctx, id)
+	return total, err
 }

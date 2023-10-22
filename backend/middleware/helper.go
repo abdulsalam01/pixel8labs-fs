@@ -10,7 +10,7 @@ type Middleware func(http.HandlerFunc) http.HandlerFunc
 
 func GenericMiddleware(next func(http.ResponseWriter, *http.Request) (interface{}, error)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		// Call the handler and capture its response and error
+		// Call the handler and capture its response and error.
 		response, err := next(w, r)
 
 		if err != nil {
@@ -18,7 +18,7 @@ func GenericMiddleware(next func(http.ResponseWriter, *http.Request) (interface{
 			return
 		}
 
-		// Marshal the response data to JSON
+		// Marshal the response data to JSON.
 		mapData := map[string]interface{}{"data": response}
 		jsonResponse, err := json.Marshal(mapData)
 		if err != nil {
@@ -26,10 +26,10 @@ func GenericMiddleware(next func(http.ResponseWriter, *http.Request) (interface{
 			return
 		}
 
-		// Set the Content-Type header to indicate JSON response
+		// Set the Content-Type header to indicate JSON response.
 		w.Header().Set("Content-Type", "application/json")
 
-		// Write the JSON response
+		// Write the JSON response.
 		w.WriteHeader(http.StatusOK)
 		w.Write(jsonResponse)
 	}
