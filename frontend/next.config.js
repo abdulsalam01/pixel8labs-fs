@@ -7,7 +7,7 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')],
   },
   eslint: {
-    dirs: ['types']
+    dirs: ['types', 'hooks', 'constant', 'context', 'helper']
   },
   images: {
     remotePatterns: [
