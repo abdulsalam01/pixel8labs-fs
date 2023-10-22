@@ -30,7 +30,8 @@
       }
     ],
     "react-hooks/exhaustive-deps": "off",
-    "@typescript-eslint/explicit-function-return-type": "off"
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-floating-promises": "off"
   },
   "settings": {
     "import/resolver": {

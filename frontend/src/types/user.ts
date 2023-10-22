@@ -8,4 +8,5 @@ export interface UserData {
   followers: number;
   following: number;
   followers_url: string;
+  total_visitor: number;
 }

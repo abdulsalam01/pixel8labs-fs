@@ -1,12 +1,18 @@
 import { Envelove } from "@/components/atoms";
 import { Users } from "@/components/atoms/icon/Users";
+import { AppContext, type AppContextType } from "@/context/AppContext";
 import { type UserData } from "@/types";
+import { useContext } from "react";
 
 interface Props {
   userData?: UserData;
 }
 
 export const About = ({ userData }: Props) => {
+  const ctx = useContext(AppContext) as AppContextType;
+  const total = ctx.followers?.length ?? 0;
+  const count = total.toLocaleString("ID");
+
   return (
     <div className="mt-6">
       <div>
@@ -27,7 +33,7 @@ export const About = ({ userData }: Props) => {
             <Users />
           </span>
           <div>
-            <span className="text-gray-800 font-bold ">821.320</span>
+            <span className="text-gray-800 font-bold ">{userData?.total_visitor}</span>
             <span className="text-gray-600 ml-2">profile visitor</span>
           </div>
         </div>

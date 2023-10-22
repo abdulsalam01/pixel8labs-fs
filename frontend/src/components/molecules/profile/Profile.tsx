@@ -15,12 +15,14 @@ export const Profile = ({ userData }: Props) => {
         src={`${avatarUrl ?? "/assets/images/profile.png"}`}
         width={160}
         height={160}
+        priority={true}
         alt="Profile photo"
       />
       <Image
         className="lg:hidden rounded-full"
         src={`${avatarUrl ?? "/assets/images/profile.png"}`}
         width={80}
+        priority={true}
         height={80}
         alt="Profile photo"
       />

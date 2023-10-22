@@ -6,11 +6,11 @@ export const useGetToken = () => {
   const params = useSearchParams();
 
   useEffect(() => {
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/callback?code=${params.get(
+      "code",
+    )}`;
     if (params.get("code") != null) {
-      const urlDest = `http://localhost:8000/api/callback?code=${params.get(
-        "code",
-      )}`;
-      fetch(urlDest)
+      fetch(url)
         .then(async (res) => {
           return await res.json();
         })
@@ -22,7 +22,7 @@ export const useGetToken = () => {
           window.location.href = "/";
         })
         .catch((err) => {
-          console.log(err);
+          throw err;
         });
     }
   }, [params]);

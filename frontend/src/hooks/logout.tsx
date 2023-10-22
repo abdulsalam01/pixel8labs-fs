@@ -1,9 +1,10 @@
 export const useLogout = () => {
   const doLogout = async () => {
     const token = localStorage.getItem("token");
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/logout`;
 
     try {
-      await fetch("http://localhost:8000/api/logout", {
+      await fetch(url, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -12,9 +13,8 @@ export const useLogout = () => {
       });
       localStorage.removeItem("token");
       window.location.href = "/";
-    } catch (error) {
-      console.error(error);
-      throw error;
+    } catch (error: any) {
+      throw new Error("Logout error" + error.message);
     }
   };
 

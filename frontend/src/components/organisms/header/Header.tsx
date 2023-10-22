@@ -17,6 +17,7 @@ export const Header = () => {
             src={"assets/images/logo-full.svg"}
             width={173}
             height={52}
+            priority={false}
             alt="Logo"
           />
         </Link>

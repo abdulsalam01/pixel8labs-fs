@@ -1,7 +1,8 @@
 export const useLogin = () => {
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/login`;
   const doLogin = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/login", {
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -9,9 +10,8 @@ export const useLogin = () => {
       });
       const jsonData = await response.json();
       window.location.href = jsonData.data;
-    } catch (error) {
-      console.error(error);
-      throw error;
+    } catch (error: any) {
+      throw new Error("Login error" + error.message);
     }
   };
 

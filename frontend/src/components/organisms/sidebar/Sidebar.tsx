@@ -10,7 +10,7 @@ export const Sidebar = () => {
     <div className="px-4  flex flex-col justify-center">
       <Profile userData={ctx.userData} />
       <About userData={ctx.userData} />
-      <VisitorList userData={ctx.userData} />
+      <VisitorList />
     </div>
   );
 };
