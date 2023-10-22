@@ -12,18 +12,21 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v4
       with:
-        go-version: 1.20.10
+        go-version: '1.21'
+        cache: false
+
+    - name: Install golangci-lint
+      uses: golangci/golangci-lint-action@v3
+      with:
+        version: v1.54
 
     - name: Lint Backend
-      run: |
-        cd ${{ github.workspace }}/backend
-        GOLINT_PATH=$(go list -m -f '{{.Dir}}' golang.org/x/lint/golint)
-        $GOLINT_PATH/golint ./...
+      run: golangci-lint run ./backend
       working-directory: ${{ github.workspace }}/backend
 
     - name: Install Node.js
