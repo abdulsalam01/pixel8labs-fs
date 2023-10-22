@@ -1,4 +1,0 @@
-[build]
-  command = "go build -o app ./cmd"
-  functions = "backend/"
-  publish = "."

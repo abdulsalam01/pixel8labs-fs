@@ -1,0 +1,24 @@
+# flyctl launch added from .gitignore
+**/backend/vendor
+
+# flyctl launch added from vendor/github.com/allegro/bigcache/v3/.gitignore
+vendor/github.com/allegro/bigcache/v3/**/.idea
+vendor/github.com/allegro/bigcache/v3/**/.DS_Store
+vendor/github.com/allegro/bigcache/v3/server/server.exe
+vendor/github.com/allegro/bigcache/v3/server/server
+vendor/github.com/allegro/bigcache/v3/server/server_dar*
+vendor/github.com/allegro/bigcache/v3/server/server_fre*
+vendor/github.com/allegro/bigcache/v3/server/server_win*
+vendor/github.com/allegro/bigcache/v3/server/server_net*
+vendor/github.com/allegro/bigcache/v3/server/server_ope*
+vendor/github.com/allegro/bigcache/v3/server/server_lin*
+vendor/github.com/allegro/bigcache/v3/**/CHANGELOG.md
+
+# flyctl launch added from vendor/github.com/go-chi/chi/v5/.gitignore
+vendor/github.com/go-chi/chi/v5/**/.idea
+vendor/github.com/go-chi/chi/v5/**/*.sw?
+vendor/github.com/go-chi/chi/v5/**/.vscode
+
+# flyctl launch added from vendor/github.com/go-chi/render/.gitignore
+vendor/github.com/go-chi/render/**/vendor
+fly.toml
