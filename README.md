@@ -1,51 +1,64 @@
-# Pixel8Labs Product Developer Take-home Test
+# GitHub OAuth Application Documentation
 
-Thanks for your interest in working with us as a product developer.
-This take-home test is for us to gauge your engineering capabilities and determine whether we can move to the work trial phase. It's not a test per se but rather a way for Pixel8Labs to know more about your abilities and also for you to see if you would like the kind of work we do, before we spend more time together in the work trial.
+This documentation provides an overview of the GitHub OAuth-based application, detailing the backend and frontend aspects. This application enables users to connect to their GitHub account via OAuth, view their six most recent repositories (or fewer), display an "About" section, log out, and access a default page if not logged in using `/octocat`.
 
-This test should not take you more than a few hours but you are allowed to spend more within the given 3 days just in case you want to touch things up and submit a polished piece of work.
+## Backend
 
-## Tasks
+### Technology Stack
+- Language: Golang 1.20
+- Router: Router-chi for routing
+- Caching: Router-chi for caching
+- Idempotency: Router-chi for ensuring idempotency
+- GitHub API Integration: Go-based wrappers for efficient communication with GitHub
+- Repository Pattern: Utilized for organized data access
 
-Here are the requirements for the take-home project
+### Installation and Setup
+1. Clone the repository.
+2. Install Golang 1.20.
+3. Run the application using `go run cmd/app.go`.
 
-### Basic tasks
+### Endpoints
+- `/login`: Initiates the OAuth flow to connect to a GitHub account.
+- `/repo`: Fetches and displays the user's six most recent repositories.
+- `/user`: Displays user-specific "About" section.
+- `/logout`: Logs the user out.
+- `/callback`: Handles code exchange against the code from the front-callback layer.
 
-Implement and deploy (to the platform provider of your choice) an application that
+### Repository Pattern
+- Data access and storage are organized using the repository pattern for maintainability and separation of concerns.
 
-- [ ] Show profile of a github user / organization with:
-  - [ ] Profile picture
-  - [ ] Full name
-  - [ ] Email if it's available
-  - [ ] Numbers of followers and following
-- [ ] Show the first 6 (or less if there're less repositories from such user) repositories of such user
-- [ ] The default home page will redirect to `/octocat`
-- [ ] Users can login using their github account using Oauth
-- [ ] Show details about profile views:
-  - [ ] The total number of views a profile have gotten (regardless whether the view was from an authenticated user or not)
-  - [ ] The last 3 people who view a particular profile (link to those profiles on the same app as well)
+### Caching and Idempotency
+- Router-chi is used to cache responses for improved performance.
+- Idempotency is enforced to ensure the same request does not have adverse effects.
 
-The frontend design for this app can be found in [this Figma file](https://www.figma.com/file/fLiLQfjSF6X7pEfHli2Lwh/Fullstack-Engineer-Test-Case?type=design&node-id=0%3A1&mode=design&t=RfULQB2MF956TxTT-1)
+## Frontend
 
-**Notes**:
+### Technology Stack
+- Framework: Next.js 13
+- Design Framework: Tailwind CSS
+- State Management: React Context
+- Custom Hooks: Implemented for efficient data fetching and state management
+- No External REST API Client: Leverages built-in libraries to interact with the backend
 
-- Go usage is optional, you can create your own backend implementation in the backend folder.
-- Frontend must be using React and the existing setup that we have in the [frontend](./frontend/) folder.
-- Tailwind usage is optional, please feel free to use any CSS libraries / frameworks.
+### Installation and Setup
+1. Clone the repository.
+2. Install Node.js and npm.
+3. Run `npm install` to install the required dependencies.
+4. Start the frontend server with `npm run dev`.
 
-### Stretch (optional) tasks
+### Project Structure
+- Atomic pattern is used for structuring the application.
+- Custom hooks are implemented for reusability.
+- React Context is employed for state management.
+- Tailwind CSS is used for styling.
 
-These tasks are optional but we would encourage you to give them a try to demonstrate more of your skills
+## GitHub API Integration
+- All interactions with the GitHub API are abstracted in the backend using Go-based wrappers.
+- The frontend communicates with the backend to retrieve data efficiently without the need for additional client libraries.
 
-- [ ] Setup Github Actions workflow file for lint check on PRs to `master`
-- [ ] Setup Github Actions workflow file to deploy on pushes to `master`
-- [ ] Deploy the website and submit the URL to us
+## Running the Application
+1. Start the backend as instructed in the Backend section.
+2. Start the frontend as instructed in the Frontend section.
+3. Access the application in your web browser at `http://localhost:3000`.
 
-## Tips
-
-- Github APIs that you might need to checkout:
-  - [Github OAuth](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps)
-  - [API to get an user profile](https://docs.github.com/en/free-pro-team@latest/rest/users/users?apiVersion=2022-11-28#get-a-user)
-  - [API to get repos of an user](https://docs.github.com/en/free-pro-team@latest/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user)
-- Remember to document your technical decisions and considerations as we're considering your thought process as much as the absolute development results.
-- Last but not least, remember to **have fun**!!
+This documentation should provide you with a clear understanding of the GitHub OAuth application, its components, and how to set up and run it locally. For further details on the code structure and implementation, please refer to the source code and comments in the respective repository files.
