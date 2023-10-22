@@ -24,9 +24,8 @@ jobs:
 
       - name: Install golangci-lint
         run: |
-          go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
-          export PATH=$PATH:$(go env GOPATH)/bin
-        shell: bash
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.55.0
+          golangci-lint --version
 
       - name: Lint Backend Code
         run: |
