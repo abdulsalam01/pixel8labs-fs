@@ -17,11 +17,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.20.10 # Specify the Go version you need
+
+      - name: Install golangci-lint
+        run: |
+          go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
+          export PATH=$PATH:$(go env GOPATH)/bin
+        shell: bash
+
       - name: Lint Backend Code
         run: |
           cd ${{ github.workspace }}/backend/
-          # Assuming you have a Go linter like golangci-lint
-          go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
           golangci-lint run
           # Add any additional Go linting commands here
 
