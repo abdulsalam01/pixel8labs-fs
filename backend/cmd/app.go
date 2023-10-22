@@ -24,7 +24,7 @@ import (
 )
 
 var (
-	routes = flag.Bool("routes", false, "Generate router documentation")
+	routes = flag.Bool("routes", false, "Generate router documentation") //nolint:all
 	path   = "config/"
 	ctx    = context.Background()
 )

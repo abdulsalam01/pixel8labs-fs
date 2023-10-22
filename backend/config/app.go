@@ -1,8 +1,8 @@
 package config
 
 import (
-	"io/ioutil"
 	"log"
+	"os"
 
 	"github.com/abdulsalam/pixel8labs/internal/entity"
 	"gopkg.in/yaml.v2"
@@ -30,7 +30,7 @@ func LoadAppConfig(configFile string) (entity.Config, error) {
 	)
 
 	// Read the YAML file into a byte slice.
-	data, err := ioutil.ReadFile(configFile + "/app.yaml") //nolint:all
+	data, err := os.ReadFile(configFile + "/app.yaml") //nolint:all
 	if err != nil {
 		log.Fatalf("error reading YAML file: %v", err)
 		return config, err
