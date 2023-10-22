@@ -26,7 +26,10 @@ jobs:
         version: v1.54
 
     - name: Lint Backend
-      run: golangci-lint run ./backend
+      run: |
+        cd ${{ github.workspace }}/backend
+        go get -u golang.org/x/lint/golint
+        golangci-lint run ./...
       working-directory: ${{ github.workspace }}/backend
 
     - name: Install Node.js
