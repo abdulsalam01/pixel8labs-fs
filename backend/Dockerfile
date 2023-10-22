@@ -7,10 +7,9 @@ WORKDIR /app
 # Copy the Go application source code into the container
 COPY . .
 
-# Build the Go application and place the binary in the /app directory
-RUN go build -o app
+# Build the Go application inside the /app/cmd directory
+RUN go build -o /app/app ./cmd
 
-# Expose the port the application will run on
 EXPOSE 8000
 
 # Command to run the application
