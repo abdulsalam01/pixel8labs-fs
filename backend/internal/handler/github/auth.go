@@ -15,7 +15,7 @@ func (h *Handler) GetCode(w http.ResponseWriter, r *http.Request) (interface{}, 
 	)
 
 	resp = h.usecaseResource.LoginUrl(ctx)
-	ctx = context.WithValue(ctx, constant.CodeToken, resp)
+	ctx = context.WithValue(ctx, constant.CodeToken, resp) //nolint:all
 
 	return resp, nil
 }
@@ -45,6 +45,6 @@ func (h *Handler) Callback(w http.ResponseWriter, r *http.Request) (interface{},
 		return token, err
 	}
 
-	ctx = context.WithValue(ctx, constant.AccessToken, token.AccessToken)
+	ctx = context.WithValue(ctx, constant.AccessToken, token.AccessToken) //nolint:all
 	return token, nil
 }

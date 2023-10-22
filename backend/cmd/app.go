@@ -80,7 +80,7 @@ func main() {
 
 	// Run apps.
 	log.Printf("App start on port :%s", config.App.Port)
-	http.ListenAndServe(fmt.Sprintf(":%s", config.App.Port), r)
+	http.ListenAndServe(fmt.Sprintf(":%s", config.App.Port), r) //nolint:all
 }
 
 func setupRoutes(

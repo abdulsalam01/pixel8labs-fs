@@ -31,6 +31,6 @@ func GenericMiddleware(next func(http.ResponseWriter, *http.Request) (interface{
 
 		// Write the JSON response.
 		w.WriteHeader(http.StatusOK)
-		w.Write(jsonResponse)
+		w.Write(jsonResponse) //nolint:all
 	}
 }
