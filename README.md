@@ -2,6 +2,17 @@
 
 This documentation provides an overview of the GitHub OAuth-based application, detailing the backend and frontend aspects. This application enables users to connect to their GitHub account via OAuth, view their six most recent repositories (or fewer), display an "About" section, log out, and access a default page if not logged in using `/octocat`.
 
+## Documentation
+- Postman Collection:
+```
+https://api.postman.com/collections/1535500-00a1ba78-9f9e-49d9-8b85-5eafa79e104d?access_key=PMAT-01HD96YRZBJYATSDH53MRXZ31P
+```
+
+- Figma Design:
+```
+https://www.figma.com/file/Muuu8UJcEY3Ixv8ji2sAlv/PixelLabs-8?mode=dev
+```
+
 ## Backend
 
 ### Technology Stack
