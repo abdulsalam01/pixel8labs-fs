@@ -21,10 +21,9 @@ jobs:
 
     - name: Lint Backend
       run: |
-        export PATH=$PATH:$(go env GOPATH)/bin
         cd ${{ github.workspace }}/backend
-        go get -u golang.org/x/lint/golint
-        golint ./...
+        GOLINT_PATH=$(go list -m -f '{{.Dir}}' golang.org/x/lint/golint)
+        $GOLINT_PATH/golint ./...
       working-directory: ${{ github.workspace }}/backend
 
     - name: Install Node.js
