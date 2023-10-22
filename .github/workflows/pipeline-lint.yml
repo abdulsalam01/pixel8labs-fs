@@ -21,7 +21,7 @@ jobs:
 
     - name: Lint Backend
       run: |
-        cd backend
+        cd ${{ github.workspace }}/backend
         go get -u golang.org/x/lint/golint
         golint ./...
       working-directory: ${{ github.workspace }}/backend
@@ -33,7 +33,7 @@ jobs:
 
     - name: Lint Frontend
       run: |
-        cd frontend
+        cd ${{ github.workspace }}/frontend
         npm install
         npm run lint
       working-directory: ${{ github.workspace }}/frontend
