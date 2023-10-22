@@ -16,7 +16,8 @@ jobs:
       - name: Install golangci-lint
         run: go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.54
       - name: Run golangci-lint
-        run: golangci-lint run
+        run: golangci-lint run ./...
+        working-directory: ${{ github.workspace }}/backend
 
   frontend:
     runs-on: ubuntu-latest
